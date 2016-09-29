@@ -8,7 +8,11 @@
 
 @import UIKit;
 
-@protocol FRDModule;
+@protocol FRDModule <UIApplicationDelegate>
+
+@end
+
+
 @interface FRDModuleManager : NSObject<UIApplicationDelegate>
 
 + (instancetype)sharedInstance;

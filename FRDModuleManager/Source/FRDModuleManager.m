@@ -7,7 +7,6 @@
 //
 
 #import "FRDModuleManager.h"
-#import "FRDModule.h"
 
 @interface FRDModuleManager ()
 

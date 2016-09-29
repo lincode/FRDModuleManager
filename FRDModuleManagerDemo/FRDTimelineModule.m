@@ -21,24 +21,20 @@
   NSLog(@"%@  Timeline", NSStringFromSelector(_cmd));
 }
 
-
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
   NSLog(@"%@  Timeline", NSStringFromSelector(_cmd));
 }
-
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
   NSLog(@"%@  Timeline", NSStringFromSelector(_cmd));
 }
 
-
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   NSLog(@"%@  Timeline", NSStringFromSelector(_cmd));
 }
-
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

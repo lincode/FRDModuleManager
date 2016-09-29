@@ -6,7 +6,7 @@
 //  Copyright © 2016 Douban Inc. All rights reserved.
 //
 
-#import "FRDModuleManager.h"
+#import <FRDModuleManager/FRDModuleManager.h>
 #import "AppDelegate.h"
 
 @interface AppDelegate ()

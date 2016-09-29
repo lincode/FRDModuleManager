@@ -6,8 +6,7 @@
 //  Copyright © 2016 Douban Inc. All rights reserved.
 //
 
-#import <FRDModuleManager/FRDModule.h>
-#import <Foundation/Foundation.h>
+#import <FRDModuleManager/FRDModuleManager.h>
 
 @interface FRDGroupModule : NSObject<FRDModule>
 

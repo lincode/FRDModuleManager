@@ -26,18 +26,15 @@
   NSLog(@"%@  Group", NSStringFromSelector(_cmd));
 }
 
-
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
   NSLog(@"%@  Group", NSStringFromSelector(_cmd));
 }
 
-
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   NSLog(@"%@  Group", NSStringFromSelector(_cmd));
 }
-
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

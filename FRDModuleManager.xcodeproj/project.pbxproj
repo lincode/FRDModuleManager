@@ -9,14 +9,12 @@
 /* Begin PBXBuildFile section */
 		A3372D771D9D010E006A97A1 /* FRDModuleManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3372D6D1D9D010E006A97A1 /* FRDModuleManager.framework */; };
 		A3372D7C1D9D010E006A97A1 /* FRDModuleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3372D7B1D9D010E006A97A1 /* FRDModuleManagerTests.m */; };
-		A3372D7E1D9D010E006A97A1 /* FRDModuleManager_Header.h in Headers */ = {isa = PBXBuildFile; fileRef = A3372D701D9D010E006A97A1 /* FRDModuleManager_Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3372D8F1D9D019F006A97A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3372D8E1D9D019F006A97A1 /* main.m */; };
 		A3372D921D9D019F006A97A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A3372D911D9D019F006A97A1 /* AppDelegate.m */; };
 		A3372D951D9D019F006A97A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3372D941D9D019F006A97A1 /* ViewController.m */; };
 		A3372D981D9D019F006A97A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3372D961D9D019F006A97A1 /* Main.storyboard */; };
 		A3372D9A1D9D019F006A97A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3372D991D9D019F006A97A1 /* Assets.xcassets */; };
 		A3372D9D1D9D019F006A97A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3372D9B1D9D019F006A97A1 /* LaunchScreen.storyboard */; };
-		A3372DA81D9D01F1006A97A1 /* FRDModule.h in Headers */ = {isa = PBXBuildFile; fileRef = A3372DA71D9D01F1006A97A1 /* FRDModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3372DAB1D9D02A3006A97A1 /* FRDModuleManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3372DA91D9D02A3006A97A1 /* FRDModuleManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3372DAC1D9D02A3006A97A1 /* FRDModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3372DAA1D9D02A3006A97A1 /* FRDModuleManager.m */; };
 		A3372DAF1D9D0CF1006A97A1 /* FRDTimelineModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A3372DAE1D9D0CF1006A97A1 /* FRDTimelineModule.m */; };
@@ -44,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		A3372D6D1D9D010E006A97A1 /* FRDModuleManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FRDModuleManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3372D701D9D010E006A97A1 /* FRDModuleManager_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRDModuleManager_Header.h; sourceTree = "<group>"; };
 		A3372D711D9D010E006A97A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3372D761D9D010E006A97A1 /* FRDModuleManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FRDModuleManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3372D7B1D9D010E006A97A1 /* FRDModuleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRDModuleManagerTests.m; sourceTree = "<group>"; };
@@ -59,7 +56,6 @@
 		A3372D991D9D019F006A97A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3372D9C1D9D019F006A97A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3372D9E1D9D019F006A97A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3372DA71D9D01F1006A97A1 /* FRDModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRDModule.h; sourceTree = "<group>"; };
 		A3372DA91D9D02A3006A97A1 /* FRDModuleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRDModuleManager.h; sourceTree = "<group>"; };
 		A3372DAA1D9D02A3006A97A1 /* FRDModuleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRDModuleManager.m; sourceTree = "<group>"; };
 		A3372DAD1D9D0CF1006A97A1 /* FRDTimelineModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRDTimelineModule.h; sourceTree = "<group>"; };
@@ -120,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				A3372DA61D9D01CE006A97A1 /* Source */,
-				A3372D701D9D010E006A97A1 /* FRDModuleManager_Header.h */,
 				A3372D711D9D010E006A97A1 /* Info.plist */,
 			);
 			path = FRDModuleManager;
@@ -167,7 +162,6 @@
 		A3372DA61D9D01CE006A97A1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A3372DA71D9D01F1006A97A1 /* FRDModule.h */,
 				A3372DA91D9D02A3006A97A1 /* FRDModuleManager.h */,
 				A3372DAA1D9D02A3006A97A1 /* FRDModuleManager.m */,
 			);
@@ -182,8 +176,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3372DAB1D9D02A3006A97A1 /* FRDModuleManager.h in Headers */,
-				A3372DA81D9D01F1006A97A1 /* FRDModule.h in Headers */,
-				A3372D7E1D9D010E006A97A1 /* FRDModuleManager_Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +571,7 @@
 				A3372D831D9D010E006A97A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3372D841D9D010E006A97A1 /* Build configuration list for PBXNativeTarget "FRDModuleManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -587,6 +580,7 @@
 				A3372D861D9D010E006A97A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3372D9F1D9D019F006A97A1 /* Build configuration list for PBXNativeTarget "FRDModuleManagerDemo" */ = {
 			isa = XCConfigurationList;
@@ -595,6 +589,7 @@
 				A3372DA11D9D019F006A97A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
