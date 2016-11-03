@@ -29,7 +29,7 @@ $ gem install cocoapods
 
 ```ruby
 target 'TargetName' do
-  pod 'Rexxar', :git => 'https://github.com/lincode/FRDModuleManager.git', :commit => '0.1.0'
+  pod 'FRDModuleManager', :git => 'https://github.com/lincode/FRDModuleManager.git', :commit => '0.1.0'
 end
 ```
 
