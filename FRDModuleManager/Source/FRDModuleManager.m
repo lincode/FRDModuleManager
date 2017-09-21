@@ -56,7 +56,17 @@
   return self.modules;
 }
 
-#pragma mark - UIApplicationDelegate's methods
+#pragma mark - State Transitions / Launch time:
+
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application willFinishLaunchingWithOptions:launchOptions];
+    }
+  }
+  return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -68,32 +78,7 @@
   return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-  for (id<FRDModule> module in self.modules) {
-    if ([module respondsToSelector:_cmd]) {
-      [module applicationWillResignActive:application];
-    }
-  }
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-  for (id<FRDModule> module in self.modules) {
-    if ([module respondsToSelector:_cmd]) {
-      [module applicationDidEnterBackground:application];
-    }
-  }
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-  for (id<FRDModule> module in self.modules) {
-    if ([module respondsToSelector:_cmd]) {
-      [module applicationWillEnterForeground:application];
-    }
-  }
-}
+#pragma mark - State Transitions / Transitioning to the foreground:
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
@@ -104,11 +89,87 @@
   }
 }
 
+#pragma mark - State Transitions / Transitioning to the foreground:
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module applicationDidEnterBackground:application];
+    }
+  }
+}
+
+#pragma mark - State Transitions / Transitioning to the inactive state:
+
+// Called when leaving the foreground state.
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module applicationWillResignActive:application];
+    }
+  }
+}
+
+// Called when transitioning out of the background state.
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module applicationWillEnterForeground:application];
+    }
+  }
+}
+
+#pragma mark - State Transitions / Termination:
+
 - (void)applicationWillTerminate:(UIApplication *)application
 {
   for (id<FRDModule> module in self.modules) {
     if ([module respondsToSelector:_cmd]) {
       [module applicationWillTerminate:application];
+    }
+  }
+}
+
+#pragma mark - Handling Remote Notification
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    }
+  }
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application didFailToRegisterForRemoteNotificationsWithError:error];
+    }
+  }
+}
+
+- (void)application:(UIApplication *)application
+  didReceiveRemoteNotification:(NSDictionary *)userInfo
+  fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+    }
+  }
+}
+
+// Deprecated from iOS 10.0
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application didReceiveRemoteNotification:userInfo];
     }
   }
 }

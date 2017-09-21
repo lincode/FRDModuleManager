@@ -88,6 +88,30 @@ FRDModuleManager 使用一个 plist 文件注册所有模块。你可以查看 D
   [[FRDModuleManager sharedInstance] applicationWillTerminate:application];
 }
 
+#pragma mark - Handling Remote Notification
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [[FRDModuleManager sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  [[FRDModuleManager sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void)application:(UIApplication *)application
+  didReceiveRemoteNotification:(NSDictionary *)userInfo
+  fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
+{
+  [[FRDModuleManager sharedInstance] application:application
+                    didReceiveRemoteNotification:userInfo
+                          fetchCompletionHandler:completionHandler];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+  [[FRDModuleManager sharedInstance] application:application
+                     didReceiveLocalNotification:notification];
+}
+
 ```
 
 在 FRDModuleManager 被 UIApplicationDelegate 各方法内留下的钩子调用时，会调用注册的每个模块的相同的方法。这样每个模块就都知晓了应用的生命周期。
