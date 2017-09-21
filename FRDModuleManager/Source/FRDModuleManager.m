@@ -193,7 +193,7 @@
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
-         withCompletionHandler:(void (^)())completionHandler
+         withCompletionHandler:(void (^)(void))completionHandler
 {
   for (id<FRDModule> module in self.modules) {
     if ([module respondsToSelector:_cmd]) {
