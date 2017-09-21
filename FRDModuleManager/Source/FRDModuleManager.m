@@ -6,6 +6,8 @@
 //  Copyright © 2016 Douban Inc. All rights reserved.
 //
 
+@import UserNotifications;
+
 #import "FRDModuleManager.h"
 
 @interface FRDModuleManager ()
@@ -170,6 +172,44 @@
   for (id<FRDModule> module in self.modules) {
     if ([module respondsToSelector:_cmd]) {
       [module application:application didReceiveRemoteNotification:userInfo];
+    }
+  }
+}
+
+#pragma mark - Handling Local Notification
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module userNotificationCenter:center
+             willPresentNotification:notification
+               withCompletionHandler:completionHandler];
+    }
+  }
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)())completionHandler
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module userNotificationCenter:center
+      didReceiveNotificationResponse:response
+               withCompletionHandler:completionHandler];
+    }
+  }
+}
+
+// Deprecated from iOS 10.0
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application didReceiveLocalNotification:notification];
     }
   }
 }

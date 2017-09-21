@@ -112,6 +112,24 @@ FRDModuleManager 使用一个 plist 文件注册所有模块。你可以查看 D
                      didReceiveLocalNotification:notification];
 }
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+  [[FRDModuleManager sharedInstance] userNotificationCenter:center
+                                    willPresentNotification:notification
+                                      withCompletionHandler:completionHandler];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)())completionHandler
+{
+  [[FRDModuleManager sharedInstance] userNotificationCenter:center
+                             didReceiveNotificationResponse:response
+                                      withCompletionHandler:completionHandler];
+}
+
 ```
 
 在 FRDModuleManager 被 UIApplicationDelegate 各方法内留下的钩子调用时，会调用注册的每个模块的相同的方法。这样每个模块就都知晓了应用的生命周期。

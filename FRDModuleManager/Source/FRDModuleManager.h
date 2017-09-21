@@ -7,13 +7,14 @@
 //
 
 @import UIKit;
+@import UserNotifications;
 
-@protocol FRDModule <UIApplicationDelegate>
+@protocol FRDModule <UIApplicationDelegate, UNUserNotificationCenterDelegate>
 
 @end
 
 
-@interface FRDModuleManager : NSObject<UIApplicationDelegate>
+@interface FRDModuleManager : NSObject<UIApplicationDelegate, UNUserNotificationCenterDelegate>
 
 + (instancetype)sharedInstance;
 

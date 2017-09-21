@@ -6,6 +6,8 @@
 //  Copyright © 2016 Douban Inc. All rights reserved.
 //
 
+@import UserNotifications;
+
 #import <FRDModuleManager/FRDModuleManager.h>
 #import "AppDelegate.h"
 
@@ -17,8 +19,7 @@
 
 #pragma mark - State Transitions
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
   NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"ModulesRegister" ofType:@"plist"];
 
@@ -26,6 +27,14 @@
   [manager loadModulesWithPlistFile:plistPath];
 
   [manager application:application didFinishLaunchingWithOptions:launchOptions];
+
+  return YES;
+}
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+  [[FRDModuleManager sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
 
   return YES;
 }
@@ -76,6 +85,26 @@
                     didReceiveRemoteNotification:userInfo
                           fetchCompletionHandler:completionHandler];
 
+}
+
+#pragma mark - Handling Local Notification
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+  [[FRDModuleManager sharedInstance] userNotificationCenter:center
+                                    willPresentNotification:notification
+                                      withCompletionHandler:completionHandler];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)())completionHandler
+{
+  [[FRDModuleManager sharedInstance] userNotificationCenter:center
+                             didReceiveNotificationResponse:response
+                                      withCompletionHandler:completionHandler];
 }
 
 @end
