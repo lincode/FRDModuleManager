@@ -214,4 +214,63 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
   }
 }
 
+#pragma mark - Handling Continuing User Activity and Handling Quick Actions
+
+- (BOOL)application:(UIApplication *)application
+  willContinueUserActivityWithType:(NSString *)userActivityType
+{
+  BOOL result = NO;
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      result = result || [module application:application willContinueUserActivityWithType:userActivityType];
+    }
+  }
+  return result;
+}
+
+- (BOOL)application:(UIApplication *)application
+  continueUserActivity:(NSUserActivity *)userActivity
+  restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler
+{
+  BOOL result = NO;
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      result = result || [module application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
+    }
+  }
+  return result;
+}
+
+- (void)application:(UIApplication *)application
+  didUpdateUserActivity:(NSUserActivity *)userActivity
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application didUpdateUserActivity:userActivity];
+    }
+  }
+}
+
+- (void)application:(UIApplication *)application
+  didFailToContinueUserActivityWithType:(NSString *)userActivityType
+              error:(NSError *)error
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application didFailToContinueUserActivityWithType:userActivityType error:error];
+    }
+  }
+}
+
+- (void)application:(UIApplication *)application
+  performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
+  completionHandler:(void (^)(BOOL succeeded))completionHandler
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application performActionForShortcutItem:shortcutItem completionHandler:completionHandler];
+    }
+  }
+}
+
 @end
