@@ -176,6 +176,38 @@
   }
 }
 
+- (void)application:(UIApplication *)application
+  handleActionWithIdentifier:(NSString *)identifier
+  forRemoteNotification:(NSDictionary *)userInfo
+  completionHandler:(void (^)(void))completionHandler
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application
+handleActionWithIdentifier:identifier
+    forRemoteNotification:userInfo
+        completionHandler:completionHandler];
+    }
+  }
+}
+
+- (void)application:(UIApplication *)application
+  handleActionWithIdentifier:(NSString *)identifier
+  forRemoteNotification:(NSDictionary *)userInfo
+   withResponseInfo:(NSDictionary *)responseInfo
+  completionHandler:(void (^)(void))completionHandler
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application
+handleActionWithIdentifier:identifier
+    forRemoteNotification:userInfo
+         withResponseInfo:responseInfo
+        completionHandler:completionHandler];
+    }
+  }
+}
+
 #pragma mark - Handling Local Notification
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
@@ -210,6 +242,48 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
   for (id<FRDModule> module in self.modules) {
     if ([module respondsToSelector:_cmd]) {
       [module application:application didReceiveLocalNotification:notification];
+    }
+  }
+}
+
+- (void)application:(UIApplication *)application
+  handleActionWithIdentifier:(NSString *)identifier
+  forLocalNotification:(UILocalNotification *)notification
+  completionHandler:(void (^)(void))completionHandler
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application
+handleActionWithIdentifier:identifier
+     forLocalNotification:notification
+        completionHandler:completionHandler];
+    }
+  }
+}
+
+- (void)application:(UIApplication *)application
+  handleActionWithIdentifier:(NSString *)identifier
+  forLocalNotification:(UILocalNotification *)notification
+   withResponseInfo:(NSDictionary *)responseInfo
+  completionHandler:(void (^)(void))completionHandler
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application
+handleActionWithIdentifier:identifier
+    forLocalNotification:notification
+         withResponseInfo:responseInfo
+        completionHandler:completionHandler];
+    }
+  }
+}
+
+- (void)application:(UIApplication *)application
+  didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+  for (id<FRDModule> module in self.modules) {
+    if ([module respondsToSelector:_cmd]) {
+      [module application:application didRegisterUserNotificationSettings:notificationSettings];
     }
   }
 }
