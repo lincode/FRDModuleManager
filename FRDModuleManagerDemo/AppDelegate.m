@@ -26,7 +26,7 @@
   FRDModuleManager *manager = [FRDModuleManager sharedInstance];
   [manager loadModulesWithPlistFile:plistPath];
 
-  [manager application:application didFinishLaunchingWithOptions:launchOptions];
+  [manager application:application willFinishLaunchingWithOptions:launchOptions];
 
   return YES;
 }
